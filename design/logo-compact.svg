@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="60" viewBox="0 0 180 60">
+  <style>
+    .t { font-family: 'Inter', sans-serif; font-weight:700; font-size:22px; fill:#FFFFFF }
+    .a { fill: #22C1C3 }
+  </style>
+  <rect width="180" height="60" rx="10" fill="#071028"/>
+  <text x="62" y="38" class="t">Transporte<span class="a">Care</span></text>
+</svg>

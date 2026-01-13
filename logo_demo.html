@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Logo + Paleta - Prototype Demo</title>
+  <style>
+    body { font-family: Inter, Roboto, Arial, sans-serif; background: #F8FAFC; color: #0F172A; padding: 32px; }
+    .header { display:flex; align-items:center; gap:16px; }
+    .logo-preview { display:flex; align-items:center; gap:12px; }
+    .swatches { display:flex; gap:12px; margin-top:20px; }
+    .sw { width:88px; height:64px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; color:white; font-weight:600; }
+    .p { color:#374151; margin-top:12px; }
+    .card { background:white; border-radius:10px; padding:18px; box-shadow:0 2px 6px rgba(10,20,30,0.04); max-width:720px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="logo-preview">
+        <img src="design/logo-icon.svg" width="72" height="72" alt="Icono - TransporteCare"/>
+        <img src="design/logo-wordmark.svg" width="260" height="72" alt="Wordmark - TransporteCare"/>
+      </div>
+    </div>
+
+    <p class="p">Paleta seleccionada (C) — <strong>Azul profundo</strong> / <strong>Turquesa suave</strong> / <strong>Azul cielo claro</strong></p>
+    <div class="swatches">
+      <div class="sw" style="background:#0F172A;">#0F172A</div>
+      <div class="sw" style="background:#22C1C3;">#22C1C3</div>
+      <div class="sw" style="background:#7DD3FC;color:#0F172A;">#7DD3FC</div>
+    </div>
+
+    <p class="p">Notas: Es un placeholder wordmark + icono, optimizado para legibilidad y contraste. Si quieres otra versión (monocromo, circular, con iniciales) la adapto.</p>
+  </div>
+</body>
+</html>

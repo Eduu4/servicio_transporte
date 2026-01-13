@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>MediMove Paraguay · Transporte Médico Seguro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #0038A8;
+    --primary-light: #4A7FD9;
+    --accent: #D52B1E;
+    --secondary: #10B981;
+    --bg-dark: #001F5C;
+    --bg-darker: #001440;
+    --text-light: #F8FAFC;
+    --text-dark: #0F172A;
+    --border-light: rgba(255,255,255,0.1);
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+}
+
+body {
+    font-family: "Inter", -apple-system, sans-serif;
+    background: linear-gradient(180deg, #F0F4F8 0%, #FFFFFF 100%);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 90px;
+}
+
+header {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    color: white;
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 24px rgba(0,31,92,0.3);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--accent), var(--primary-light));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 20px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(213,43,30,0.3);
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.role-badge {
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.role-indicator {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,56,168,0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,56,168,0.35);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--accent), #E74C3C);
+    color: white;
+    box-shadow: 0 4px 12px rgba(213,43,30,0.25);
+}
+
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(213,43,30,0.35);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    color: white;
+    padding: 50px 24px;
+    margin: 24px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,31,92,0.4);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(213,43,30,0.15), transparent);
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.hero-highlight {
+    color: var(--accent);
+}
+
+.hero p {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 24px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+}
+
+.hero-feature-icon {
+    font-size: 20px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hero-visual {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(213,43,30,0.2), rgba(0,56,168,0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+    position: relative;
+    z-index: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 24px;
+}
+
+.quick-action-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-color: var(--primary);
+}
+
+.quick-action-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.quick-action-card h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.quick-action-card p {
+    font-size: 14px;
+    color: #64748B;
+    line-height: 1.5;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    margin: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #E2E8F0;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: #F8FAFC;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0,56,168,0.1);
+}
+
+.form-helper {
+    font-size: 12px;
+    color: #64748B;
+    margin-top: 6px;
+}
+
+.trip-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+}
+
+.trip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.trip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 16px;
+}
+
+.trip-id {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-dark);
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-pending { background: #FEF3C7; color: #92400E; }
+.status-assigned { background: #DBEAFE; color: #1E3A8A; }
+.status-progress { background: #D1FAE5; color: #065F46; }
+.status-completed { background: #D1FAE5; color: #065F46; }
+.status-rejected { background: #FEE2E2; color: #991B1B; }
+
+.trip-route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    font-size: 15px;
+    background: #F8FAFC;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.trip-info {
+    color: #64748B;
+    font-size: 14px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-bar-container {
+    background: #E2E8F0;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 5px;
+}
+
+.trip-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-sm {
+    padding: 10px 16px;
+    font-size: 13px;
+    flex: 1;
+    min-width: 120px;
+}
+
+.btn-outline {
+    background: white;
+    border: 2px solid #E2E8F0;
+    color: var(--text-dark);
+}
+
+.btn-outline:hover {
+    background: #F8FAFC;
+    border-color: var(--primary);
+}
+
+nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 10px;
+    border-radius: 100px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 6px;
+    z-index: 99;
+    border: 2px solid rgba(0,0,0,0.05);
+}
+
+nav button {
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: #64748B;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+nav button.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,56,168,0.25);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 32px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    margin-bottom: 24px;
+}
+
+.modal-header h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #64748B;
+}
+
+.empty-state-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    opacity: 0.4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 24px;
+}
+
+.stats-card {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,56,168,0.25);
+}
+
+.stats-value {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+.stats-label {
+    font-size: 14px;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.notification {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    background: white;
+    padding: 18px 24px;
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    z-index: 1001;
+    animation: slideIn 0.3s ease;
+    border-left: 5px solid var(--success);
+    max-width: 360px;
+    font-weight: 500;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.btn-block {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.emergency-banner {
+    background: linear-gradient(135deg, var(--accent), #E74C3C);
+    color: white;
+    padding: 16px 24px;
+    margin: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(213,43,30,0.3);
+}
+
+.emergency-icon {
+    font-size: 32px;
+    animation: pulse 2s infinite;
+}
+
+.emergency-text {
+    flex: 1;
+}
+
+.emergency-text h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.emergency-text p {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    
+    .hero-visual {
+        margin: 0 auto;
+    }
+    
+    .hero-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .trip-actions {
+        flex-direction: column;
+    }
+    
+    .btn-sm {
+        width: 100%;
+    }
+    
+    nav {
+        width: calc(100% - 40px);
+        padding: 8px;
+    }
+
+    nav button {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .btn-secondary {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .role-badge {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-section">
+      <div class="logo-icon">🚑</div>
+      <div>
+        <div class="logo-text">MediMove</div>
+        <div class="logo-subtitle">Paraguay</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="role-badge">
+        <div class="role-indicator"></div>
+        <span id="currentRole">Pasajero</span>
+      </div>
+      <button class="btn btn-secondary" id="roleSwitch" onclick="toggleRole()">Cambiar Rol</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="heroSection">
+  <div class="hero-content">
+    <h1>Transporte médico <span class="hero-highlight">confiable</span> en todo Paraguay</h1>
+    <!--<p>Solicita ambulancias y traslados médicos asistidos con seguimiento en tiempo real. Servicio especializado para personas mayores y con discapacidad.</p>-->
+    <p>Servicio especializado. Solicita ambulancias y traslados médicos asistidos con seguimiento en tiempo real.</p>
+
+    <div class="hero-features">
+      <div class="hero-feature">
+        <span class="hero-feature-icon">✓</span>
+        <span>Seguimiento GPS en vivo</span>
+      </div>
+      <div class="hero-feature">
+        <span class="hero-feature-icon">✓</span>
+        <span>Personal capacitado</span>
+      </div>
+      <div class="hero-feature">
+        <span class="hero-feature-icon">✓</span>
+        <span>Cobertura nacional</span>
+      </div>
+      <div class="hero-feature">
+        <span class="hero-feature-icon">✓</span>
+        <span>Atención 24/7</span>
+      </div>
+    </div>
+    
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-block" onclick="showSection('request')">🚑 Solicitar Viaje Ahora</button>
+      <button class="btn btn-secondary btn-block" onclick="showSection('tracking')">📍 Ver Mis Viajes</button>
+    </div>
+  </div>
+  <div class="hero-visual">🏥</div>
+</section>
+
+<div class="quick-actions" id="quickActions">
+  <div class="quick-action-card" onclick="showSection('request')">
+    <div class="quick-action-icon">🚑</div>
+    <h4>Solicitar Traslado</h4>
+    <p>Agenda un traslado médico programado o urgente</p>
+  </div>
+  
+  <div class="quick-action-card" onclick="showSection('tracking')">
+    <div class="quick-action-icon">📍</div>
+    <h4>Seguimiento en Vivo</h4>
+    <p>Monitorea tu ambulancia en tiempo real</p>
+  </div>
+  
+  <div class="quick-action-card" onclick="showEmergencyInfo()">
+    <div class="quick-action-icon">📞</div>
+    <h4>Números de Emergencia</h4>
+    <p>Acceso rápido a contactos importantes</p>
+  </div>
+</div>
+
+<div id="requestSection" class="card hidden">
+  <h3>📋 Nueva Solicitud de Traslado Médico</h3>
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label>Nombre del Paciente *</label>
+      <input type="text" id="paciente" placeholder="Ej: María Benítez" required>
+    </div>
+
+    <div class="form-group">
+      <label>Teléfono de Contacto *</label>
+      <input type="tel" id="telefono" placeholder="Ej: 0981 123 456" required>
+      <div class="form-helper">WhatsApp preferentemente</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Dirección de Origen *</label>
+    <input type="text" id="origen" placeholder="Ej: Mcal. López 1234, Asunción" required>
+    <div class="form-helper">Incluye barrio y referencias cercanas</div>
+  </div>
+
+  <div class="form-group">
+    <label>Dirección de Destino *</label>
+    <input type="text" id="destino" placeholder="Ej: Hospital de Clínicas, San Lorenzo" required>
+    <div class="form-helper">Hospital, clínica o centro médico</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Fecha y Hora *</label>
+      <input type="datetime-local" id="fecha" required>
+    </div>
+
+    <div class="form-group">
+      <label>Departamento</label>
+      <select id="departamento">
+        <option>Asunción</option>
+        <option>Central</option>
+        <option>Alto Paraná</option>
+        <option>Itapúa</option>
+        <option>Caaguazú</option>
+        <option>Cordillera</option>
+        <option>Paraguarí</option>
+        <option>Misiones</option>
+        <option>Ñeembucú</option>
+        <option>Amambay</option>
+        <option>Canindeyú</option>
+        <option>Concepción</option>
+        <option>San Pedro</option>
+        <option>Caazapá</option>
+        <option>Guairá</option>
+        <option>Presidente Hayes</option>
+        <option>Boquerón</option>
+        <option>Alto Paraguay</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Tipo de Servicio *</label>
+    <select id="tipo">
+      <option>🚑 Ambulancia Básica (Traslado Simple)</option>
+      <option>🏥 Ambulancia con Soporte Vital</option>
+      <option>👨‍⚕️ Traslado con Enfermero/a</option>
+      <option>🦽 Vehículo Adaptado (Silla de Ruedas)</option>
+      <option>💉 Traslado para Diálisis</option>
+      <option>🩺 Traslado Post-operatorio</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Requerimientos Médicos / Notas Importantes</label>
+    <textarea id="notas" rows="4" placeholder="Ej: Paciente diabético, necesita oxígeno portátil, movilidad reducida..."></textarea>
+    <div class="form-helper">Detalla necesidades especiales, medicación, alergias, etc.</div>
+  </div>
+
+  <button class="btn btn-primary btn-block" onclick="crearViaje()">✓ Confirmar Solicitud</button>
+  <button class="btn btn-outline btn-block" onclick="showSection('home')">Cancelar</button>
+</div>
+
+<div id="trackingSection" class="card hidden">
+  <h3>📍 Seguimiento de Traslados</h3>
+  <div id="viajesContainer"></div>
+</div>
+
+<div id="driverDashboard" class="hidden">
+  <div class="grid">
+    <div class="stats-card">
+      <div class="stats-label">Traslados Completados Hoy</div>
+      <div class="stats-value" id="statsCompleted">0</div>
+    </div>
+    <div class="stats-card" style="background: linear-gradient(135deg, var(--accent), #E74C3C);">
+      <div class="stats-label">Traslados Activos</div>
+      <div class="stats-value" id="statsActive">0</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🚨 Solicitudes Disponibles</h3>
+    <div id="requestsContainer"></div>
+  </div>
+</div>
+
+<div id="smsModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>📱 Compartir Seguimiento</h3>
+      <p style="color: #64748B; font-size: 14px;">Envía el enlace de seguimiento por WhatsApp o SMS</p>
+    </div>
+    <div style="background: #F8FAFC; padding: 16px; border-radius: 12px; font-size: 14px; margin: 20px 0; border: 2px dashed #E2E8F0;">
+      <div id="smsPreview"></div>
+    </div>
+    <div class="form-group">
+      <label>Número de WhatsApp / SMS</label>
+      <input type="tel" id="smsNumber" placeholder="+595 981 123 456">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="sendSMS()" style="flex:1">📤 Enviar</button>
+      <button class="btn btn-outline" onclick="closeSMS()" style="flex:1">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<nav id="mainNav">
+  <button class="active" onclick="showSection('home')">🏠 Inicio</button>
+  <button onclick="showSection('request')">➕ Solicitar</button>
+  <button onclick="showSection('tracking')">📍 Viajes</button>
+</nav>
+
+<script src="app.js"></script>
+
+</body>
+</html>

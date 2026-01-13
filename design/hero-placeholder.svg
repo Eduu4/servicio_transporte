@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <defs>
+    <linearGradient id="h" x1="0" x2="1">
+      <stop offset="0%" stop-color="#071028" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="14" fill="url(#h)" />
+  <g fill="#FFFFFF" opacity="0.06">
+    <rect x="20" y="20" width="120" height="120" rx="10"/>
+    <rect x="160" y="40" width="140" height="80" rx="10"/>
+  </g>
+  <text x="24" y="166" fill="#7DD3FC" font-family="Inter, Roboto" font-size="14" font-weight="700">Transporte Asistido</text>
+</svg>
